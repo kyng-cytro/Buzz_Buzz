@@ -1,0 +1,33 @@
+{
+  "version": "1037336964027924537",
+  "id": "1037336963902083100",
+  "guild_id": "1019545356758945853",
+  "name": "work",
+  "type": 1,
+  "options": [
+    {
+      "type": 3,
+      "name": "action",
+      "value": "claim"
+    }
+  ],
+  "application_command": {
+    "id": "1037336963902083100",
+    "application_id": "1019634041777045605",
+    "version": "1037336964027924537",
+    "default_permission": true,
+    "default_member_permissions": "2147483648",
+    "type": 1,
+    "name": "work",
+    "description": "Work for one hour and come back to claim your paycheck",
+    "guild_id": "1019545356758945853",
+    "options": [
+      {
+        "type": 3,
+        "name": "action",
+        "description": "Optional action like claim"
+      }
+    ]
+  },
+  "attachments": []
+}

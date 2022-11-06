@@ -1,0 +1,21 @@
+{
+  "version": "1037336963981791313",
+  "id": "1037336963839180925",
+  "guild_id": "1019545356758945853",
+  "name": "coins",
+  "type": 1,
+  "options": [],
+  "application_command": {
+    "id": "1037336963839180925",
+    "application_id": "1019634041777045605",
+    "version": "1037336963981791313",
+    "default_permission": true,
+    "default_member_permissions": "2147483648",
+    "type": 1,
+    "name": "coins",
+    "description": "Get the coins amount of anyone in the server",
+    "guild_id": "1019545356758945853",
+    "options": [{ "type": 6, "name": "member", "description": "Member" }]
+  },
+  "attachments": []
+}
