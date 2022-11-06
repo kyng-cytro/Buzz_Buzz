@@ -11,13 +11,8 @@ def handler(bot, file):
 
 
 def work(bot):
-    global WORKING
-    if WORKING:
-        data = json.load(open('commands/claim.json'))
-    else:
-        data = json.load(open('commands/work.json'))
+    data = json.load(open('commands/work.json'))
     bot.triggerSlashCommand(appID, channelID, guildID, data)
-    WORKING = not WORKING
     print("Job completed successfully")
 
 
@@ -28,7 +23,6 @@ if __name__ == '__main__':
     channelID = os.getenv('channelID')
     appID = os.getenv('appID')
     TOKEN = os.getenv('TOKEN')
-    WORKING = False
 
     # Create Self Bot
     bot = discum.Client(token=TOKEN, log=False)
