@@ -4,8 +4,8 @@ import schedule
 import os
 
 
-def handler(bot, file):
-    data = json.load(file)
+def handler(bot):
+    data = json.load(open('commands/daily.json'))
     bot.triggerSlashCommand(appID, channelID, guildID, data)
     print("Job completed successfully")
 
@@ -29,7 +29,7 @@ if __name__ == '__main__':
 
     # Claims Daily
     schedule.every().day.at("21:28").do(
-        handler, bot=bot, file=open('commands/daily.json'))
+        handler, bot=bot)
 
     # Work and claim hourly
     schedule.every(1).hour.do(work, bot=bot)
