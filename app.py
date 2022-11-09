@@ -2,6 +2,14 @@ import discum
 import json
 import schedule
 import os
+from random import randint
+import time
+from datetime import datetime, timedelta
+
+# TODO: uncomment these if using .env file
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def handler(bot):
@@ -11,8 +19,33 @@ def handler(bot):
 
 
 def work(bot):
+    # User global variable
+    global WORKING
+    global LASTRUN
+
+    # Don't Work if one already exists
+    if WORKING:
+        return
+
+    # Don't Work if it hasn't been an hour since the last
+    if (datetime.now() - timedelta(hours=1) < LASTRUN):
+        return
+
+    WORKING = True
+
+    # Wait random number of seconds
+    wait = randint(600, os.getenv('WAIT'))
+    print(f"Wait for {wait} seconds")
+    time.sleep(wait)
+
+    # Work
     data = json.load(open('commands/work.json'))
     bot.triggerSlashCommand(appID, channelID, guildID, data)
+
+    # Setup for next work
+    LASTRUN = datetime.now()
+    WORKING = False
+
     print("Job completed successfully")
 
 
@@ -23,6 +56,10 @@ if __name__ == '__main__':
     channelID = os.getenv('channelID')
     appID = os.getenv('appID')
     TOKEN = os.getenv('TOKEN')
+    WORKING = False
+
+    # LASTRUN equal to current time minus 1 hour
+    LASTRUN = datetime.now() - timedelta(hours=1)
 
     # Create Self Bot
     bot = discum.Client(token=TOKEN, log=False)
